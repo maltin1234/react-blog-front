@@ -3,9 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom/dist";
-import { useAddNewPostMutation, useGetPostsQuery } from "../api/car";
-import Car from "./Car";
-function AddCar() {
+import { useAddNewPostMutation, useGetPostsQuery } from "../api/post";
+import PostComponent from "./PostComponent";
+function AddPost() {
   const [name, setName] = useState("");
   const [addPost] = useAddNewPostMutation();
   const  { isLoading, isSuccess, isFetching} = useGetPostsQuery();
@@ -80,8 +80,9 @@ function AddCar() {
 }
       </div>
     </form>
+    
     </>
   );
 }
 
-export default AddCar;
+export default AddPost;

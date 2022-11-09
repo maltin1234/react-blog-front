@@ -1,13 +1,14 @@
 import React from 'react'
-import AddCar from '../components/AddCar'
-import CarList from '../components/CarList'
+import AddPost from '../components/AddPost'
+
+import PostList from '../components/PostList'
 
 function HomePage() {
   return (
     <>
-  <CarList></CarList>
+<PostList></PostList>
   
-<AddCar></AddCar>
+<AddPost></AddPost>
   </>
   )
 }

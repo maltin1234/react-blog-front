@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import CarList from './components/CarList';
-import { useAddNewPostMutation } from './api/car';
+import PostList from './components/PostList';
+import { useAddNewPostMutation } from './api/post';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Redirect,
 } from 'react-router-dom'
-import AddCar from './components/AddCar';
+import AddPost from './components/AddPost';
 import HomePage from './pages/HomePage';
 
 function App() {

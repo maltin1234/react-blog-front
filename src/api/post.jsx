@@ -1,22 +1,26 @@
 // Need to use the React-specific entry point to import createApi
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { current } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 // Define a service using a base URL and expected endpoints
 export const postApi = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/api/v1/' }),
   endpoints: (builder) => ({
+    tagTypes: ['Post'],
     getPosts: builder.query({
-      query: () => `posts/`,
+      query: (page = 1) => `posts/pagination?page=${page}`,
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-      providesTags: (result, error, arg) =>
-      result
-        ? [...result.map(({ id }) => ({ type: 'Post', id })), 'Post']
-        : ['Post'],
-  
-    }),
+      transformResponse: response => ({
+      totalPages: response.totalPages,
+      posts: response.posts,
+      currentPage: response.currentPage
+      }),
+      providesTags: ['Post'],
+
+  }),
     getPost: builder.query({
       query: postId => `/posts/${postId}`,
       headers: {

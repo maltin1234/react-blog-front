@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Car({name}) {
+function PostComponent({name}) {
 
     useEffect(() => {
         console.log(name)
@@ -25,4 +25,4 @@ function Car({name}) {
   )
 }
 
-export default Car
+export default PostComponent
